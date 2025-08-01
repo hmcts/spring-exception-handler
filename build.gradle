@@ -5,6 +5,7 @@ plugins {
   id 'org.springframework.boot' version '3.5.4'
   id 'com.github.ben-manes.versions' version '0.52.0'
   id 'org.sonarqube' version '6.2.0.5505'
+  id 'maven-publish'
   /*
     Applies analysis tools including checkstyle and OWASP Dependency checker.
     See https://github.com/hmcts/gradle-java-plugin
@@ -13,8 +14,8 @@ plugins {
 }
 
 application {
-  mainClass = 'uk.gov.hmcts.reform.demo.Application'
-  group = 'uk.gov.hmcts.reform'
+  mainClass = 'uk.gov.hmcts.common.Application'
+  group = 'uk.gov.hmcts'
   version = '0.0.1'
 }
 
@@ -102,8 +103,8 @@ tasks.check.dependsOn(integration)
 
 sonarqube {
   properties {
-    property "sonar.projectName", "Reform :: spring-boot-template"
-    property "sonar.projectKey", "uk.gov.hmcts.reform:spring-boot-template"
+    property "sonar.projectName", "Reform :: hmcts-spring-exception-handler"
+    property "sonar.projectKey", "uk.gov.hmcts.reform:hmcts-spring-exception-handler"
   }
 }
 
@@ -155,21 +156,40 @@ dependencies {
 
   testImplementation group: 'org.springframework.boot', name: 'spring-boot-starter-test'
   testImplementation group: 'io.rest-assured', name: 'rest-assured', version: '5.5.5'
+
+  implementation 'com.microsoft.azure:applicationinsights-spring-boot-starter:2.6.4'
+  compileOnly 'org.projectlombok:lombok:1.18.38'
+  annotationProcessor 'org.projectlombok:lombok:1.18.38'
+
 }
 
 bootJar {
-  archiveFileName = "spring-boot-template.jar"
+
+  archiveFileName = "hmcts-spring-exception-handler.jar"
 
   manifest {
     attributes('Implementation-Version': project.version.toString())
   }
 }
+wrapper {
+  distributionType = Wrapper.DistributionType.ALL
+}
 
+publishing {
+  publications {
+    Main(MavenPublication) {
+      from components.java
+      groupId project.group
+      artifactId 'spring-exception-handler'
+      version project.version
+    }
+  }
+}
 // Gradle 7.x issue, workaround from: https://github.com/gradle/gradle/issues/17236#issuecomment-894768083
 rootProject.tasks.named("processSmokeTestResources") {
   duplicatesStrategy = 'include'
 }
 
 wrapper {
-    distributionType = Wrapper.DistributionType.ALL
+  distributionType = Wrapper.DistributionType.ALL
 }
