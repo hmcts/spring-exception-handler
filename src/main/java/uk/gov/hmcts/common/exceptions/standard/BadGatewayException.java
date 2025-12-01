@@ -9,6 +9,6 @@ public class BadGatewayException extends BaseRuntimeException {
     }
 
     public BadGatewayException(String title, String detail, Throwable cause) {
-        super(HttpStatus.UNPROCESSABLE_ENTITY, title, detail, cause);
+        super(HttpStatus.BAD_GATEWAY, title, detail, cause);
     }
 }

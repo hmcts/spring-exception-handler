@@ -17,6 +17,8 @@ public class BaseRuntimeException extends RuntimeException {
     private boolean logError = true;
     @Setter
     private boolean isWarning = true;
+    @Setter
+    private boolean isRetryable = false;
     private final HttpStatus status;
     private final String title;
     private final String detail;
@@ -41,7 +43,6 @@ public class BaseRuntimeException extends RuntimeException {
 
     public ProblemDetail createProblemDetail() {
         String operationId = LogUtil.getOrCreateOperationId();
-
         if (logError) {
             log.error("An error has occurred ID {}:", operationId, this);
         }
@@ -52,6 +53,7 @@ public class BaseRuntimeException extends RuntimeException {
 
         problemDetail.setProperty("operation_id", operationId);
         problemDetail.setProperty("is_warning", isWarning);
+        problemDetail.setProperty("is_retryable", isRetryable);
         return problemDetail;
     }
 }
