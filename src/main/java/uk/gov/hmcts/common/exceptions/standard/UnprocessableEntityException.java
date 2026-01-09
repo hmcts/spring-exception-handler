@@ -13,6 +13,6 @@ public class UnprocessableEntityException extends BaseRuntimeException {
     }
 
     public UnprocessableEntityException(String title, String detail, String type, Throwable cause) {
-        super(HttpStatus.UNPROCESSABLE_ENTITY, title, detail, type, cause);
+        super(HttpStatus.UNPROCESSABLE_CONTENT, title, detail, type, cause);
     }
 }
