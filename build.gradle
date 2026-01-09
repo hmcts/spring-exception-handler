@@ -141,21 +141,21 @@ ext {
 ext['snakeyaml.version'] = '2.0'
 
 dependencies {
-  implementation group: 'org.springframework.boot', name: 'spring-boot-starter-web'
-  implementation group: 'org.springframework.boot', name: 'spring-boot-starter-actuator'
-  implementation group: 'org.springframework.boot', name: 'spring-boot-starter-aop'
-  implementation group: 'org.springframework.boot', name: 'spring-boot-starter-json'
-  implementation group: 'org.springdoc', name: 'springdoc-openapi-starter-webmvc-ui', version: '3.0.1'
+  implementation 'org.springframework.boot:spring-boot-starter-web'
+  implementation 'org.springframework.boot:spring-boot-starter-actuator'
+  implementation 'org.springframework.boot:spring-boot-starter-aop'
+  implementation 'org.springframework.boot:spring-boot-starter-json'
+  implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:3.0.1'
 
-  implementation group: 'com.github.hmcts.java-logging', name: 'logging', version: '7.0.0'
+  implementation 'com.github.hmcts.java-logging:logging:7.0.0'
 
-  implementation group: 'org.apache.logging.log4j', name: 'log4j-api', version: log4JVersion
-  implementation group: 'org.apache.logging.log4j', name: 'log4j-to-slf4j', version: log4JVersion
-  implementation group: 'ch.qos.logback', name: 'logback-classic', version: logbackVersion
-  implementation group: 'ch.qos.logback', name: 'logback-core', version: logbackVersion
+  implementation "org.apache.logging.log4j:log4j-api:${log4JVersion}"
+  implementation "org.apache.logging.log4j:log4j-to-slf4j:${log4JVersion}"
+  implementation "ch.qos.logback:logback-classic:${logbackVersion}"
+  implementation "ch.qos.logback:logback-core:${logbackVersion}"
 
-  testImplementation group: 'org.springframework.boot', name: 'spring-boot-starter-test'
-  testImplementation group: 'io.rest-assured', name: 'rest-assured', version: '6.0.0'
+  testImplementation 'org.springframework.boot:spring-boot-starter-test'
+  testImplementation 'io.rest-assured:rest-assured:6.0.0'
 
   implementation 'com.microsoft.azure:applicationinsights-spring-boot-starter:2.6.4'
   compileOnly 'org.projectlombok:lombok:1.18.40'
@@ -188,9 +188,9 @@ publishing {
   publications {
     Main(MavenPublication) {
       from components.java
-      groupId project.group
-      artifactId 'spring-exception-handler'
-      version project.version
+      groupId = project.group
+      artifactId = 'spring-exception-handler'
+      version = project.version
     }
   }
 }
