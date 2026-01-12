@@ -19,4 +19,9 @@ Standard Exceptions: 4XX
 - `BadGatewayException`: Represents a 502 Bad Gateway error.
 - `ServiceUnavailableException`: Represents a 503 Service Unavailable error.
 - `InternalServerErrorException`: Represents a 500 Internal Server Error.
-- 
+
+
+# Publishing
+
+This library can be published to the Azure Maven repository by using the `Publish to Azure Artifacts` Action in
+the GitHub repo.
