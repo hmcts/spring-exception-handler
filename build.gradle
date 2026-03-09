@@ -16,7 +16,7 @@ plugins {
 application {
   mainClass = 'uk.gov.hmcts.common.Application'
   group = 'uk.gov.hmcts'
-  version = '0.0.5'
+  version = '0.0.6'
 }
 
 java {
@@ -142,24 +142,10 @@ ext['snakeyaml.version'] = '2.0'
 
 dependencies {
   implementation 'org.springframework.boot:spring-boot-starter-web'
-  implementation 'org.springframework.boot:spring-boot-starter-actuator'
-  implementation 'org.springframework.boot:spring-boot-starter-json'
-  implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:3.0.1'
-
   implementation 'com.github.hmcts.java-logging:logging:7.0.0'
-
-  implementation "org.apache.logging.log4j:log4j-api:${log4JVersion}"
-  implementation "org.apache.logging.log4j:log4j-to-slf4j:${log4JVersion}"
-  implementation "ch.qos.logback:logback-classic:${logbackVersion}"
-  implementation "ch.qos.logback:logback-core:${logbackVersion}"
-
-  testImplementation 'org.springframework.boot:spring-boot-starter-test'
-  testImplementation 'io.rest-assured:rest-assured:6.0.0'
-
   implementation 'com.microsoft.azure:applicationinsights-spring-boot-starter:2.6.4'
   compileOnly 'org.projectlombok:lombok:1.18.42'
   annotationProcessor 'org.projectlombok:lombok:1.18.42'
-
 }
 
 bootJar {
