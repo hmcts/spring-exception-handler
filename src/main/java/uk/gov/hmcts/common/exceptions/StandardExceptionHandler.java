@@ -22,7 +22,7 @@ public class StandardExceptionHandler {
 
 
     @ExceptionHandler(BaseRuntimeException.class)
-    public ResponseEntity<ProblemDetail> handleFeatureDisabledException(BaseRuntimeException ex) {
+    public ResponseEntity<ProblemDetail> handleBaseRuntimeException(BaseRuntimeException ex) {
         return ResponseEntity.status(ex.getStatus())
             .contentType(MediaType.APPLICATION_PROBLEM_JSON)
             .body(ex.createProblemDetail());

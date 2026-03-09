@@ -46,6 +46,21 @@ public class BaseRuntimeException extends RuntimeException {
         if (logError) {
             log.error("An error has occurred ID {}:", operationId, this);
         }
+        return createProblemDetail(status, detail, title, type, isWarning, isRetryable);
+    }
+
+    public static ProblemDetail createProblemDetail(HttpStatus status, String detail, String title, String type,
+                                                    boolean isWarning, boolean isRetryable) {
+        String operationId = LogUtil.getOrCreateOperationId();
+        return createProblemDetail(status, operationId, detail, title, type, isWarning, isRetryable);
+    }
+
+    public static ProblemDetail createProblemDetail(HttpStatus status,
+                                                    String operationId,
+                                                    String detail,
+                                                    String title,
+                                                    String type,
+                                                    boolean isWarning, boolean isRetryable) {
         ProblemDetail problemDetail = ProblemDetail.forStatusAndDetail(status, detail);
         problemDetail.setTitle(title);
         problemDetail.setType(URI.create("https://hmcts.gov.uk/problems/" + type));
