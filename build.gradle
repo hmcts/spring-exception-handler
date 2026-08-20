@@ -16,7 +16,7 @@ plugins {
 application {
   mainClass = 'uk.gov.hmcts.common.Application'
   group = 'uk.gov.hmcts'
-  version = '1.0.2'
+  version = '1.0.3'
 }
 
 java {
