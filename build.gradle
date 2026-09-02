@@ -144,8 +144,8 @@ dependencies {
   implementation 'org.springframework.boot:spring-boot-starter-web'
   implementation 'com.github.hmcts.java-logging:logging:8.0.0'
   implementation 'com.microsoft.azure:applicationinsights-web:3.7.9'
-  compileOnly 'org.projectlombok:lombok:1.18.46'
-  annotationProcessor 'org.projectlombok:lombok:1.18.46'
+  compileOnly 'org.projectlombok:lombok:1.18.48'
+  annotationProcessor 'org.projectlombok:lombok:1.18.48'
 }
 
 bootJar {
